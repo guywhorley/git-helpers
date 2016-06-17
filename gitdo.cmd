@@ -7,7 +7,7 @@ rem  In the context of Git, this means remote = 'origin' and branch = 'master'.
 rem
 rem  Note: a remote called 'origin' must exist in the repository.
 rem
-rem  Syntax: gadd %1 %2 %3 %4
+rem  Syntax: gitdo %1 %2 %3 %4
 rem     %1 - commit message, enclosed in double quotes
 rem     %2 - file to add, "*" or "./someFile.txt"
 rem     %3 - branch
