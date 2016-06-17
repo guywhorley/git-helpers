@@ -2,29 +2,34 @@
 rem  git add, git commit, git push to origin in one step
 rem  Only happy path is considered. Contains no error checking.
 rem
+rem  In the absence of any args, reasonable defaults are used.
+rem  In the context of Git, this means remote = 'origin' and branch = 'master'.
+rem
 rem  Note: a remote called 'origin' must exist in the repository.
 rem
-rem   Syntax: gadd %1 %2 %3
-rem
-rem   %1 - file to add, "*" or "./someFile.txt"
-rem   %2 - commit message, enclosed in double quotes
-rem   %3 - branch
-rem   %4 - remote
+rem  Syntax: gadd %1 %2 %3 %4
+rem     %1 - commit message, enclosed in double quotes
+rem     %2 - file to add, "*" or "./someFile.txt"
+rem     %3 - branch
+rem     %4 - remote
+rem  Examples:
+rem     gitdo "fixing css"
+rem     gitdo "added more examples" readme.md fix-branch fix-source
 
 cls
 SETLOCAL
 
-rem SET DEFAULTS
+rem   SET DEFAULTS
 rem   Note that there must be no spaces between values
-rem   and the equals signs... yep, it's a cmds shell thing!
+rem   and the equals signs... yep, it's a Windows cmd-shell thing!
 SET BRANCH="master"
 SET REMOTE="origin"
 SET MESSAGE="Saving latest work."
 SET FILENAME="-A"
 
 rem echo %BRANCH% %REMOTE% %MESSAGE% %FILENAME%
-IF not "%~1" == "" ( SET FILENAME=%~1  )
-IF not "%~2" == "" ( SET MESSAGE="%~2" )
+IF not "%~1" == "" ( SET MESSAGE="%~1" )
+IF not "%~2" == "" ( SET FILENAME=%~2  )
 IF not "%~3" == "" ( SET BRANCH=%~3  )
 IF not "%~4" == "" ( SET REMOTE=%~4  )
 
